@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raquel & Claudio | Casamento</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: '#0B1033', // Azul Marinho Profundo
+                        mint: '#9CD9B5', // Verde Menta
+                        cream: '#F9F7F2', // Off-white
+                        gold: '#D4AF37', // Dourado
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        body: ['"Cormorant Garamond"', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* --- ANIMAÇÕES GERAIS --- */
+        .fade-in { animation: fadeIn 0.8s ease-out forwards; opacity: 0; transform: translateY(20px); }
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+
+        @keyframes fadeIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- ANIMAÇÃO DO PRELOADER --- */
+        @keyframes heartbeat {
+            0% { transform: scale(1); opacity: 0.8; }
+            25% { transform: scale(1.1); opacity: 1; }
+            50% { transform: scale(1); opacity: 0.8; }
+            75% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); opacity: 0.8; }
+        }
+        
+        .heart-beat-anim {
+            animation: heartbeat 1.5s infinite ease-in-out;
+        }
+
+        .fade-out-loader {
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1s ease-in-out;
+        }
+
+        /* --- BOTÃO PULSANTE --- */
+        .pulse-green {
+            box-shadow: 0 0 0 0 rgba(156, 217, 181, 0.7);
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(156, 217, 181, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(156, 217, 181, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(156, 217, 181, 0); }
+        }
+
+        /* Equalizador Spotify */
+        .equalizer-bar { animation: equalize 1s infinite; }
+        .bar-1 { animation-delay: 0.1s; }
+        .bar-2 { animation-delay: 0.2s; }
+        .bar-3 { animation-delay: 0.3s; }
+        
+        @keyframes equalize {
+            0%, 100% { height: 4px; }
+            50% { height: 12px; }
+        }
+
+        .hidden-section { display: none; }
+        body.loading { overflow: hidden; }
+    </style>
+</head>
+<body class="bg-cream text-navy font-body antialiased pb-24 md:pb-0 loading">
+
+    <div id="preloader" class="fixed inset-0 z-[100] bg-navy flex flex-col items-center justify-center transition-all duration-1000">
+        <div class="relative">
+            <i data-lucide="heart" class="w-20 h-20 text-mint fill-mint heart-beat-anim"></i>
+        </div>
+        <p class="text-white font-serif text-2xl mt-6 tracking-[0.3em] uppercase animate-pulse">
+            R <span class="text-mint">&</span> C
+        </p>
+        <p class="text-white/40 text-xs mt-2 tracking-widest uppercase">Carregando Amor...</p>
+    </div>
+
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 transition-all duration-300">
+        <div class="container mx-auto px-6 h-20 flex justify-between items-center">
+            
+            <div onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="cursor-pointer flex items-center gap-3 group">
+                <div class="relative w-12 h-12 flex items-center justify-center overflow-hidden rounded-full shadow-sm transition duration-500">
+                    <img src="WhatsApp Image 2026-02-11 at 10.56.22-Photoroom.png" alt="Raquel e Claudio" class="w-full h-full object-cover">
+                </div>
+            </div>
+
+            <div class="hidden md:flex space-x-10 uppercase tracking-[0.15em] text-xs font-bold text-gray-500">
+                <a href="#home" class="hover:text-navy hover:scale-105 transition">Home</a>
+                <a href="#story" class="hover:text-navy hover:scale-105 transition">História</a>
+                <a href="#location" class="hover:text-navy hover:scale-105 transition">Local</a>
+                <a href="#gifts" class="hover:text-navy hover:scale-105 transition">Presentes</a>
+            </div>
+
+            <button class="md:hidden text-navy" onclick="toggleMobileMenu()">
+                <i data-lucide="menu" class="w-8 h-8"></i>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full left-0 shadow-xl text-center z-50">
+            <a href="#home" onclick="toggleMobileMenu()" class="block w-full py-5 border-b border-gray-50 text-sm uppercase tracking-widest hover:bg-gray-50">Home</a>
+            <a href="#story" onclick="toggleMobileMenu()" class="block w-full py-5 border-b border-gray-50 text-sm uppercase tracking-widest hover:bg-gray-50">História</a>
+            <a href="#location" onclick="toggleMobileMenu()" class="block w-full py-5 border-b border-gray-50 text-sm uppercase tracking-widest hover:bg-gray-50">Local</a>
+            <a href="#gifts" onclick="toggleMobileMenu()" class="block w-full py-5 text-sm uppercase tracking-widest hover:bg-gray-50">Presentes</a>
+        </div>
+    </nav>
+
+    <main class="pt-20">
+
+        <section id="home" class="page-section fade-in">
+            <div class="relative h-[65vh] w-full bg-navy overflow-hidden flex items-center justify-center">
+                <div class="absolute inset-0 opacity-60 bg-cover bg-center parallax" style="background-image: url('WhatsApp Image 2026-04-04 at 19.34.19.jpeg');"></div>
+                <div class="absolute inset-0 bg-gradient-to-b from-navy/40 via-navy/20 to-navy"></div>
+                
+                <div class="relative z-10 text-center text-white px-4 flex flex-col items-center justify-center h-full">
+                    <p class="uppercase tracking-[0.4em] text-xs md:text-sm text-mint mb-6">Save The Date</p>
+                    <h1 class="font-serif text-6xl md:text-8xl mb-4 drop-shadow-lg">Raquel & Claudio</h1>
+                    <div class="w-24 h-[1px] bg-white/60 mx-auto my-8"></div>
+                    <p class="font-body text-2xl md:text-3xl italic font-light">20 de Outubro de 2026</p>
+                </div>
+            </div>
+
+            <div class="container mx-auto px-6 py-16 -mt-16 relative z-20">
+                <div class="bg-white shadow-xl rounded-sm p-8 md:p-12 max-w-5xl mx-auto border-t-4 border-mint grid grid-cols-1 md:grid-cols-2 gap-10 text-center">
+                    <div class="fade-in delay-100">
+                        <div class="w-12 h-12 bg-cream rounded-full flex items-center justify-center mx-auto mb-4 text-navy"><i data-lucide="clock" class="w-5 h-5"></i></div>
+                        <h3 class="font-serif text-xl text-navy mb-2">A Cerimônia</h3>
+                        <p class="text-gray-500 font-light">Início às 16:00h</p>
+                    </div>
+                    <div class="fade-in delay-200 border-t md:border-t-0 md:border-l border-gray-100 pt-8 md:pt-0 md:pl-8">
+                        <div class="w-12 h-12 bg-cream rounded-full flex items-center justify-center mx-auto mb-4 text-navy"><i data-lucide="map-pin" class="w-5 h-5"></i></div>
+                        <h3 class="font-serif text-xl text-navy mb-2">Recanto do Criador</h3>
+                        <p class="text-gray-500 font-light">BR-158 Km 3,5 - Jardim Silvana, PR</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center py-20 px-6 max-w-2xl mx-auto">
+                <i data-lucide="quote" class="w-8 h-8 text-mint/50 mx-auto mb-4"></i>
+                <p class="font-serif text-3xl text-navy italic leading-relaxed">"O amor não consiste em olhar um para o outro, mas sim em olhar juntos para a mesma direção."</p>
+                <p class="text-gray-400 mt-6 text-xs tracking-widest uppercase">Antoine de Saint-Exupéry</p>
+            </div>
+        </section>
+
+        <section id="story" class="page-section container mx-auto px-6 py-16 max-w-4xl fade-in">
+            <div class="text-center mb-16">
+                <span class="text-mint text-xs font-bold tracking-[0.2em] uppercase">Timeline</span>
+                <h2 class="text-4xl md:text-5xl font-serif text-navy mt-3">Nossa História</h2>
+            </div>
+            <div class="space-y-12 relative border-l border-navy/10 ml-6 md:ml-1/2">
+                <div class="relative pl-12 md:pl-0 fade-in delay-100">
+                    <div class="md:flex items-center justify-between group">
+                        <div class="absolute -left-[5px] md:left-1/2 md:-ml-[5px] top-2 w-2.5 h-2.5 bg-navy rounded-full group-hover:bg-mint transition duration-500"></div>
+                        <div class="md:w-[45%] md:text-right pr-8">
+                            <span class="text-4xl font-serif text-navy/20 block mb-2">2018</span>
+                            <h3 class="text-2xl font-serif text-navy">O Primeiro Olhar</h3>
+                        </div>
+                        <div class="md:w-[45%] md:pl-8 mt-2 md:mt-0">
+                            <p class="text-lg text-gray-600 leading-relaxed">Em uma festa de amigos em comum, nossos destinos se cruzaram. Não sabíamos, mas ali começava nossa eternidade.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative pl-12 md:pl-0 fade-in delay-200">
+                     <div class="md:flex items-center justify-between group">
+                        <div class="absolute -left-[5px] md:left-1/2 md:-ml-[5px] top-2 w-2.5 h-2.5 bg-mint rounded-full"></div>
+                        <div class="md:w-[45%] text-left pr-8 md:order-2 md:pl-8 md:pr-0">
+                            <span class="text-4xl font-serif text-navy/20 block mb-2">2020</span>
+                            <h3 class="text-2xl font-serif text-navy">O Namoro</h3>
+                        </div>
+                        <div class="md:w-[45%] md:pl-8 mt-2 md:mt-0 md:order-1 md:text-left md:pl-0 md:pr-8">
+                            <p class="text-lg text-gray-600 leading-relaxed">O pedido aconteceu na praia, sob a luz do luar, selando nosso compromisso de caminhar juntos.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="location" class="page-section fade-in">
+            <div class="h-[40vh] bg-gray-200 w-full relative">
+                <iframe src="https://maps.google.com/maps?q=Recanto+do+Criador+-+Parque+de+Exposi%C3%A7%C3%A3o+-+BR+158+Km+3,5+-+Jardim+Silvana,+PR,+87309-650&z=15&output=embed" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                <div class="absolute inset-0 pointer-events-none border-b-8 border-navy/80"></div>
+            </div>
+            <div class="container mx-auto px-6 -mt-20 relative z-10 mb-20">
+                <div class="bg-white max-w-2xl mx-auto p-10 shadow-2xl rounded-sm text-center">
+                    <p class="uppercase tracking-widest text-gray-400 text-xs mb-4">A Cerimônia</p>
+                    <h2 class="font-serif text-4xl text-navy mb-6">Recanto do Criador</h2>
+                    <p class="text-gray-600 text-lg mb-8 font-light">BR-158 Km 3,5 - Parque de Exposição<br>Jardim Silvana, PR</p>
+                    <div class="flex flex-col md:flex-row gap-4 justify-center">
+                        <a href="https://waze.com/ul?q=Recanto%20do%20Criador%20Parque%20de%20Exposi%C3%A7%C3%A3o%20Jardim%20Silvana&navigate=yes" target="_blank" rel="noopener noreferrer" class="px-8 py-3 bg-navy text-white text-xs font-bold uppercase tracking-widest hover:bg-mint hover:text-navy transition rounded-sm">Waze</a>
+                        <a href="https://maps.app.goo.gl/nPMFDoFUQ8Qq5zheA?g_st=iw" target="_blank" rel="noopener noreferrer" class="px-8 py-3 border border-navy text-navy text-xs font-bold uppercase tracking-widest hover:bg-navy hover:text-white transition rounded-sm">Google Maps</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="gifts" class="page-section container mx-auto px-6 py-16 fade-in">
+            <div class="text-center mb-16">
+                <span class="text-mint text-xs font-bold tracking-[0.2em] uppercase">Gift List</span>
+                <h2 class="text-4xl md:text-5xl font-serif text-navy mt-3">Lista de Presentes</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <div onclick="openModal('Forno Elétrico de Embutir Fischer Infinity', 'Sob consulta')" class="bg-white p-8 border border-gray-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition duration-500 cursor-pointer group text-center rounded-sm">
+                    <img src="forno eletrico.png" alt="Forno Elétrico de Embutir Fischer Infinity" class="mx-auto mb-6 w-32 h-32 object-cover rounded-3xl shadow-sm">
+                    <h3 class="font-serif text-2xl text-navy">Forno Elétrico de Embutir Fischer Infinity</h3>
+                    <p class="text-mint font-bold text-xl">78 litros com Grill</p>
+                    <button class="mt-6 w-full py-2 border border-navy text-navy text-xs uppercase font-bold tracking-widest group-hover:bg-navy group-hover:text-white transition">Presentear</button>
+                </div>
+                <div onclick="openModal('Cooktop de Indução Fischer 4 Bocas', 'Sob consulta')" class="bg-white p-8 border border-gray-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition duration-500 cursor-pointer group text-center rounded-sm">
+                    <img src="cooktop.png" alt="Cooktop de Indução Fischer 4 Bocas" class="mx-auto mb-6 w-32 h-32 object-cover rounded-3xl shadow-sm">
+                    <h3 class="font-serif text-2xl text-navy">Cooktop de Indução Fischer 4 Bocas</h3>
+                    <p class="text-mint font-bold text-xl">Vitrocerâmica com Touch Screen 220V</p>
+                    <button class="mt-6 w-full py-2 border border-navy text-navy text-xs uppercase font-bold tracking-widest group-hover:bg-navy group-hover:text-white transition">Presentear</button>
+                </div>
+                <div onclick="openModal('Micro-ondas de Embutir Fischer Fit Line', 'Sob consulta')" class="bg-white p-8 border border-gray-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition duration-500 cursor-pointer group text-center rounded-sm">
+                    <img src="microondas.png" alt="Micro-ondas de Embutir Fischer Fit Line" class="mx-auto mb-6 w-32 h-32 object-cover rounded-3xl shadow-sm">
+                    <h3 class="font-serif text-2xl text-navy">Micro-ondas de Embutir Fischer Fit Line</h3>
+                    <p class="text-mint font-bold text-xl">25 litros com função Descongelar</p>
+                    <button class="mt-6 w-full py-2 border border-navy text-navy text-xs uppercase font-bold tracking-widest group-hover:bg-navy group-hover:text-white transition">Presentear</button>
+                </div>
+                <div onclick="openModal('Lava e Seca Smart WD13FG', 'Sob consulta')" class="bg-white p-8 border border-gray-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition duration-500 cursor-pointer group text-center rounded-sm">
+                    <img src="maquina de lavar e secar.png" alt="Lava e Seca Smart WD13FG" class="mx-auto mb-6 w-32 h-32 object-cover rounded-3xl shadow-sm">
+                    <h3 class="font-serif text-2xl text-navy">Lava e Seca Smart WD13FG</h3>
+                    <p class="text-mint font-bold text-xl">AI Control Inox 127V 13kg + 8kg</p>
+                    <button class="mt-6 w-full py-2 border border-navy text-navy text-xs uppercase font-bold tracking-widest group-hover:bg-navy group-hover:text-white transition">Presentear</button>
+                </div>
+                <div onclick="openModal('Geladeira Electrolux Frost Free 590L Efficient', 'Sob consulta')" class="bg-white p-8 border border-gray-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition duration-500 cursor-pointer group text-center rounded-sm">
+                    <img src="geladeira.png" alt="Geladeira Electrolux Frost Free 590L" class="mx-auto mb-6 w-32 h-32 object-cover rounded-3xl shadow-sm">
+                    <h3 class="font-serif text-2xl text-navy">Geladeira Electrolux Frost Free 590L</h3>
+                    <p class="text-mint font-bold text-xl">Efficient 3 Portas Cor Inox Look</p>
+                    <button class="mt-6 w-full py-2 border border-navy text-navy text-xs uppercase font-bold tracking-widest group-hover:bg-navy group-hover:text-white transition">Presentear</button>
+                </div>
+                <div onclick="openModal('Adega Brastemp Dual Zone 33 Garrafas', 'Sob consulta')" class="bg-white p-8 border border-gray-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition duration-500 cursor-pointer group text-center rounded-sm">
+                    <img src="adega.png" alt="Adega Brastemp Dual Zone 33 Garrafas" class="mx-auto mb-6 w-32 h-32 object-cover rounded-3xl shadow-sm">
+                    <h3 class="font-serif text-2xl text-navy">Adega Brastemp Dual Zone</h3>
+                    <p class="text-mint font-bold text-xl">33 Garrafas</p>
+                    <button class="mt-6 w-full py-2 border border-navy text-navy text-xs uppercase font-bold tracking-widest group-hover:bg-navy group-hover:text-white transition">Presentear</button>
+                </div>
+                <div onclick="openModal('Smart TV Samsung 65 polegadas Vision AI OLED 4K', 'Sob consulta')" class="bg-white p-8 border border-gray-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition duration-500 cursor-pointer group text-center rounded-sm">
+                    <img src="televisão.png" alt="Smart TV Samsung 65 polegadas Vision AI OLED 4K" class="mx-auto mb-6 w-32 h-32 object-cover rounded-3xl shadow-sm">
+                    <h3 class="font-serif text-2xl text-navy">Smart TV Samsung 65 polegadas Vision AI</h3>
+                    <p class="text-mint font-bold text-xl">OLED 4K</p>
+                    <button class="mt-6 w-full py-2 border border-navy text-navy text-xs uppercase font-bold tracking-widest group-hover:bg-navy group-hover:text-white transition">Presentear</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-navy text-white py-12 text-center relative z-10">
+        <p class="font-serif text-2xl mb-2">Raquel & Claudio</p>
+        <p class="text-white/40 text-xs tracking-widest uppercase">São Paulo, 2026</p>
+    </footer>
+
+    <a href="https://open.spotify.com/playlist/SEU_LINK_AQUI" target="_blank" class="fixed bottom-6 left-6 z-40 bg-white/90 backdrop-blur-md text-navy px-4 py-3 rounded-full shadow-lg flex items-center gap-3 hover:bg-navy hover:text-white transition duration-300 border border-gray-200 group">
+        <div class="flex items-end gap-[2px] h-4 mb-1">
+            <span class="w-[3px] bg-mint equalizer-bar bar-1"></span>
+            <span class="w-[3px] bg-mint equalizer-bar bar-2"></span>
+            <span class="w-[3px] bg-mint equalizer-bar bar-3"></span>
+        </div>
+        <span class="text-[10px] font-bold uppercase tracking-widest">Playlist</span>
+    </a>
+
+    <a href="https://wa.me/5511999999999?text=Olá!%20Gostaria%20de%20confirmar%20minha%20presença." target="_blank" class="fixed bottom-6 right-6 z-40 group flex items-center gap-4">
+        <span class="bg-white text-navy px-4 py-2 rounded-sm shadow-md text-xs font-bold uppercase tracking-widest hidden md:block">
+            Confirmar Presença
+        </span>
+        <div class="bg-mint text-navy p-4 rounded-full shadow-2xl pulse-green hover:bg-navy hover:text-white transition duration-300">
+            <i data-lucide="message-circle-heart" class="w-6 h-6"></i>
+        </div>
+    </a>
+
+    <div id="modal" class="fixed inset-0 z-[60] hidden bg-navy/90 backdrop-blur-sm flex items-center justify-center p-4 fade-in">
+        <div class="bg-white w-full max-w-sm p-0 rounded-sm overflow-hidden shadow-2xl relative">
+            <div class="bg-navy p-6 text-center text-white relative">
+                <button onclick="closeModal()" class="absolute top-4 right-4 text-white/60 hover:text-white"><i data-lucide="x"></i></button>
+                <p class="text-xs uppercase tracking-widest text-mint mb-1">Você escolheu</p>
+                <h3 id="modal-title" class="font-serif text-2xl">Presente</h3>
+            </div>
+            <div class="p-8 text-center">
+                <p id="modal-price" class="text-3xl text-navy font-serif font-bold mb-6">R$ 0,00</p>
+                <div class="bg-white border-2 border-dashed border-gray-300 p-2 inline-block rounded-lg mb-6 relative group">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=PixExemplo" alt="QR Code Pix" class="w-40 h-40 opacity-90">
+                    <p class="absolute -bottom-6 left-0 right-0 text-[10px] text-gray-400">Escaneie com o App</p>
+                </div>
+                <button onclick="alert('Chave PIX copiada!')" class="w-full bg-mint/20 text-navy hover:bg-mint hover:text-white py-3 uppercase text-xs font-bold tracking-widest transition rounded-sm flex items-center justify-center gap-2"><i data-lucide="copy" class="w-4 h-4"></i> Copiar Chave Pix</button>
+                
+                <p class="text-navy text-xs font-bold uppercase tracking-widest mt-8 mb-3">Ou Pague Por Link</p>
+                <div>
+                    <a id="payment-link-anchor" href="https://mpago.li/2TYEn4g" target="_blank" rel="noopener noreferrer" class="text-navy font-bold text-base md:text-lg underline decoration-navy decoration-2 hover:text-mint transition">
+                        https://mpago.li/2TYEn4g
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        // LOGICA DE PRELOADER E NAVEGAÇÃO
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const loader = document.getElementById('preloader');
+                loader.classList.add('fade-out-loader'); 
+                document.body.classList.remove('loading');
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                }, 1000);
+            }, 2000); // 2 segundos de preloader
+        });
+
+        function toggleMobileMenu() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        }
+
+        const modal = document.getElementById('modal');
+        function openModal(title, price) {
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('modal-price').innerText = "R$ " + price;
+            modal.classList.remove('hidden');
+        }
+        function closeModal() {
+            modal.classList.add('hidden');
+        }
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+    </script>
+</body>
+</html>
