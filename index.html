@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Raquel & Claudio | Casamento</title>
-    
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
-    
+
     <link href="https://fonts.googleapis.com/css2?family=Catharsis:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 
     <script>
@@ -15,10 +15,10 @@
             theme: {
                 extend: {
                     colors: {
-                        navy: '#0B1033', // Azul Marinho Profundo
-                        mint: '#9CD9B5', // Verde Menta
-                        cream: '#F9F7F2', // Off-white
-                        gold: '#D4AF37', // Dourado
+                        navy: '#0B1033',
+                        mint: '#9CD9B5',
+                        cream: '#F9F7F2',
+                        gold: '#D4AF37',
                     },
                     fontFamily: {
                         serif: ['"Playfair Display"', 'serif'],
@@ -30,7 +30,6 @@
     </script>
 
     <style>
-        /* --- ANIMAÇÕES GERAIS --- */
         .fade-in { animation: fadeIn 0.8s ease-out forwards; opacity: 0; transform: translateY(20px); }
         .delay-100 { animation-delay: 0.1s; }
         .delay-200 { animation-delay: 0.2s; }
@@ -40,7 +39,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* --- ANIMAÇÃO DO PRELOADER --- */
         @keyframes heartbeat {
             0% { transform: scale(1); opacity: 0.8; }
             25% { transform: scale(1.1); opacity: 1; }
@@ -48,7 +46,7 @@
             75% { transform: scale(1.1); opacity: 1; }
             100% { transform: scale(1); opacity: 0.8; }
         }
-        
+
         .heart-beat-anim {
             animation: heartbeat 1.5s infinite ease-in-out;
         }
@@ -59,23 +57,22 @@
             transition: opacity 1s ease-in-out;
         }
 
-        /* --- BOTÃO PULSANTE --- */
         .pulse-green {
             box-shadow: 0 0 0 0 rgba(156, 217, 181, 0.7);
             animation: pulse 2s infinite;
         }
+
         @keyframes pulse {
             0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(156, 217, 181, 0.7); }
             70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(156, 217, 181, 0); }
             100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(156, 217, 181, 0); }
         }
 
-        /* Equalizador Spotify */
         .equalizer-bar { animation: equalize 1s infinite; }
         .bar-1 { animation-delay: 0.1s; }
         .bar-2 { animation-delay: 0.2s; }
         .bar-3 { animation-delay: 0.3s; }
-        
+
         @keyframes equalize {
             0%, 100% { height: 4px; }
             50% { height: 12px; }
@@ -99,7 +96,6 @@
 
     <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 transition-all duration-300">
         <div class="container mx-auto px-6 h-20 flex justify-between items-center">
-            
             <div onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="cursor-pointer flex items-center gap-3 group">
                 <div class="relative w-12 h-12 flex items-center justify-center overflow-hidden rounded-full shadow-sm transition duration-500">
                     <img src="WhatsApp Image 2026-02-11 at 10.56.22-Photoroom.png" alt="Raquel e Claudio" class="w-full h-full object-cover">
@@ -108,7 +104,7 @@
 
             <div class="hidden md:flex space-x-10 uppercase tracking-[0.15em] text-xs font-bold text-gray-500">
                 <a href="#home" class="hover:text-navy hover:scale-105 transition">Home</a>
-                <a href="#story" class="hover:text-navy hover:scale-105 transition">História</a>
+                <a href="#story" class="hover:text-navy hover:scale-105 transition">Hist&oacute;ria</a>
                 <a href="#location" class="hover:text-navy hover:scale-105 transition">Local</a>
                 <a href="#gifts" class="hover:text-navy hover:scale-105 transition">Presentes</a>
             </div>
@@ -120,19 +116,18 @@
 
         <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full left-0 shadow-xl text-center z-50">
             <a href="#home" onclick="toggleMobileMenu()" class="block w-full py-5 border-b border-gray-50 text-sm uppercase tracking-widest hover:bg-gray-50">Home</a>
-            <a href="#story" onclick="toggleMobileMenu()" class="block w-full py-5 border-b border-gray-50 text-sm uppercase tracking-widest hover:bg-gray-50">História</a>
+            <a href="#story" onclick="toggleMobileMenu()" class="block w-full py-5 border-b border-gray-50 text-sm uppercase tracking-widest hover:bg-gray-50">Hist&oacute;ria</a>
             <a href="#location" onclick="toggleMobileMenu()" class="block w-full py-5 border-b border-gray-50 text-sm uppercase tracking-widest hover:bg-gray-50">Local</a>
             <a href="#gifts" onclick="toggleMobileMenu()" class="block w-full py-5 text-sm uppercase tracking-widest hover:bg-gray-50">Presentes</a>
         </div>
     </nav>
 
     <main class="pt-20">
-
         <section id="home" class="page-section fade-in">
             <div class="relative h-[65vh] w-full bg-navy overflow-hidden flex items-center justify-center">
                 <div class="absolute inset-0 opacity-60 bg-cover bg-center parallax" style="background-image: url('WhatsApp Image 2026-04-04 at 19.34.19.jpeg');"></div>
                 <div class="absolute inset-0 bg-gradient-to-b from-navy/40 via-navy/20 to-navy"></div>
-                
+
                 <div class="relative z-10 text-center text-white px-4 flex flex-col items-center justify-center h-full">
                     <p class="uppercase tracking-[0.4em] text-xs md:text-sm text-mint mb-6">Save The Date</p>
                     <h1 class="font-serif text-6xl md:text-8xl mb-4 drop-shadow-lg">Raquel & Claudio</h1>
@@ -145,28 +140,28 @@
                 <div class="bg-white shadow-xl rounded-sm p-8 md:p-12 max-w-5xl mx-auto border-t-4 border-mint grid grid-cols-1 md:grid-cols-2 gap-10 text-center">
                     <div class="fade-in delay-100">
                         <div class="w-12 h-12 bg-cream rounded-full flex items-center justify-center mx-auto mb-4 text-navy"><i data-lucide="clock" class="w-5 h-5"></i></div>
-                        <h3 class="font-serif text-xl text-navy mb-2">A Cerimônia</h3>
-                        <p class="text-gray-500 font-light">Início às 16:00h</p>
+                        <h3 class="font-serif text-xl text-navy mb-2">A Cerim&ocirc;nia</h3>
+                        <p class="text-gray-500 font-light">In&iacute;cio &agrave;s 16:00h</p>
                     </div>
                     <div class="fade-in delay-200 border-t md:border-t-0 md:border-l border-gray-100 pt-8 md:pt-0 md:pl-8">
                         <div class="w-12 h-12 bg-cream rounded-full flex items-center justify-center mx-auto mb-4 text-navy"><i data-lucide="map-pin" class="w-5 h-5"></i></div>
                         <h3 class="font-serif text-xl text-navy mb-2">Recanto do Criador</h3>
-                        <p class="text-gray-500 font-light">BR-158 Km 3,5 - Jardim Silvana, PR</p>
+                        <p class="text-gray-500 font-light">BR-158 Km 3,5 - Jardim Silvana, Campo Mourão - PR</p>
                     </div>
                 </div>
             </div>
 
             <div class="text-center py-20 px-6 max-w-2xl mx-auto">
                 <i data-lucide="quote" class="w-8 h-8 text-mint/50 mx-auto mb-4"></i>
-                <p class="font-serif text-3xl text-navy italic leading-relaxed">"O amor não consiste em olhar um para o outro, mas sim em olhar juntos para a mesma direção."</p>
-                <p class="text-gray-400 mt-6 text-xs tracking-widest uppercase">Antoine de Saint-Exupéry</p>
+                <p class="font-serif text-3xl text-navy italic leading-relaxed">"O amor n&atilde;o consiste em olhar um para o outro, mas sim em olhar juntos para a mesma dire&ccedil;&atilde;o."</p>
+                <p class="text-gray-400 mt-6 text-xs tracking-widest uppercase">Antoine de Saint-Exup&eacute;ry</p>
             </div>
         </section>
 
         <section id="story" class="page-section container mx-auto px-6 py-16 max-w-4xl fade-in">
             <div class="text-center mb-16">
                 <span class="text-mint text-xs font-bold tracking-[0.2em] uppercase">Timeline</span>
-                <h2 class="text-4xl md:text-5xl font-serif text-navy mt-3">Nossa História</h2>
+                <h2 class="text-4xl md:text-5xl font-serif text-navy mt-3">Nossa Hist&oacute;ria</h2>
             </div>
             <div class="space-y-12 relative border-l border-navy/10 ml-6 md:ml-1/2">
                 <div class="relative pl-12 md:pl-0 fade-in delay-100">
@@ -177,12 +172,12 @@
                             <h3 class="text-2xl font-serif text-navy">O Primeiro Olhar</h3>
                         </div>
                         <div class="md:w-[45%] md:pl-8 mt-2 md:mt-0">
-                            <p class="text-lg text-gray-600 leading-relaxed">Em uma festa de amigos em comum, nossos destinos se cruzaram. Não sabíamos, mas ali começava nossa eternidade.</p>
+                            <p class="text-lg text-gray-600 leading-relaxed">Em uma festa de amigos em comum, nossos destinos se cruzaram. N&atilde;o sab&iacute;amos, mas ali come&ccedil;ava nossa eternidade.</p>
                         </div>
                     </div>
                 </div>
                 <div class="relative pl-12 md:pl-0 fade-in delay-200">
-                     <div class="md:flex items-center justify-between group">
+                    <div class="md:flex items-center justify-between group">
                         <div class="absolute -left-[5px] md:left-1/2 md:-ml-[5px] top-2 w-2.5 h-2.5 bg-mint rounded-full"></div>
                         <div class="md:w-[45%] text-left pr-8 md:order-2 md:pl-8 md:pr-0">
                             <span class="text-4xl font-serif text-navy/20 block mb-2">2020</span>
@@ -203,9 +198,9 @@
             </div>
             <div class="container mx-auto px-6 -mt-20 relative z-10 mb-20">
                 <div class="bg-white max-w-2xl mx-auto p-10 shadow-2xl rounded-sm text-center">
-                    <p class="uppercase tracking-widest text-gray-400 text-xs mb-4">A Cerimônia</p>
+                    <p class="uppercase tracking-widest text-gray-400 text-xs mb-4">A Cerim&ocirc;nia</p>
                     <h2 class="font-serif text-4xl text-navy mb-6">Recanto do Criador</h2>
-                    <p class="text-gray-600 text-lg mb-8 font-light">BR-158 Km 3,5 - Parque de Exposição<br>Jardim Silvana, PR</p>
+                    <p class="text-gray-600 text-lg mb-8 font-light">BR-158 Km 3,5 - Parque de Exposi&ccedil;&atilde;o<br>Jardim Silvana, Campo Mour&atilde;o - PR</p>
                     <div class="flex flex-col md:flex-row gap-4 justify-center">
                         <a href="https://waze.com/ul?q=Recanto%20do%20Criador%20Parque%20de%20Exposi%C3%A7%C3%A3o%20Jardim%20Silvana&navigate=yes" target="_blank" rel="noopener noreferrer" class="px-8 py-3 bg-navy text-white text-xs font-bold uppercase tracking-widest hover:bg-mint hover:text-navy transition rounded-sm">Waze</a>
                         <a href="https://maps.app.goo.gl/nPMFDoFUQ8Qq5zheA?g_st=iw" target="_blank" rel="noopener noreferrer" class="px-8 py-3 border border-navy text-navy text-xs font-bold uppercase tracking-widest hover:bg-navy hover:text-white transition rounded-sm">Google Maps</a>
@@ -219,57 +214,13 @@
                 <span class="text-mint text-xs font-bold tracking-[0.2em] uppercase">Gift List</span>
                 <h2 class="text-4xl md:text-5xl font-serif text-navy mt-3">Lista de Presentes</h2>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                <div onclick="openModal('Forno Elétrico de Embutir Fischer Infinity', 'Sob consulta')" class="bg-white p-8 border border-gray-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition duration-500 cursor-pointer group text-center rounded-sm">
-                    <img src="forno eletrico.png" alt="Forno Elétrico de Embutir Fischer Infinity" class="mx-auto mb-6 w-32 h-32 object-cover rounded-3xl shadow-sm">
-                    <h3 class="font-serif text-2xl text-navy">Forno Elétrico de Embutir Fischer Infinity</h3>
-                    <p class="text-mint font-bold text-xl">78 litros com Grill</p>
-                    <button class="mt-6 w-full py-2 border border-navy text-navy text-xs uppercase font-bold tracking-widest group-hover:bg-navy group-hover:text-white transition">Presentear</button>
-                </div>
-                <div onclick="openModal('Cooktop de Indução Fischer 4 Bocas', 'Sob consulta')" class="bg-white p-8 border border-gray-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition duration-500 cursor-pointer group text-center rounded-sm">
-                    <img src="cooktop.png" alt="Cooktop de Indução Fischer 4 Bocas" class="mx-auto mb-6 w-32 h-32 object-cover rounded-3xl shadow-sm">
-                    <h3 class="font-serif text-2xl text-navy">Cooktop de Indução Fischer 4 Bocas</h3>
-                    <p class="text-mint font-bold text-xl">Vitrocerâmica com Touch Screen 220V</p>
-                    <button class="mt-6 w-full py-2 border border-navy text-navy text-xs uppercase font-bold tracking-widest group-hover:bg-navy group-hover:text-white transition">Presentear</button>
-                </div>
-                <div onclick="openModal('Micro-ondas de Embutir Fischer Fit Line', 'Sob consulta')" class="bg-white p-8 border border-gray-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition duration-500 cursor-pointer group text-center rounded-sm">
-                    <img src="microondas.png" alt="Micro-ondas de Embutir Fischer Fit Line" class="mx-auto mb-6 w-32 h-32 object-cover rounded-3xl shadow-sm">
-                    <h3 class="font-serif text-2xl text-navy">Micro-ondas de Embutir Fischer Fit Line</h3>
-                    <p class="text-mint font-bold text-xl">25 litros com função Descongelar</p>
-                    <button class="mt-6 w-full py-2 border border-navy text-navy text-xs uppercase font-bold tracking-widest group-hover:bg-navy group-hover:text-white transition">Presentear</button>
-                </div>
-                <div onclick="openModal('Lava e Seca Smart WD13FG', 'Sob consulta')" class="bg-white p-8 border border-gray-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition duration-500 cursor-pointer group text-center rounded-sm">
-                    <img src="maquina de lavar e secar.png" alt="Lava e Seca Smart WD13FG" class="mx-auto mb-6 w-32 h-32 object-cover rounded-3xl shadow-sm">
-                    <h3 class="font-serif text-2xl text-navy">Lava e Seca Smart WD13FG</h3>
-                    <p class="text-mint font-bold text-xl">AI Control Inox 127V 13kg + 8kg</p>
-                    <button class="mt-6 w-full py-2 border border-navy text-navy text-xs uppercase font-bold tracking-widest group-hover:bg-navy group-hover:text-white transition">Presentear</button>
-                </div>
-                <div onclick="openModal('Geladeira Electrolux Frost Free 590L Efficient', 'Sob consulta')" class="bg-white p-8 border border-gray-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition duration-500 cursor-pointer group text-center rounded-sm">
-                    <img src="geladeira.png" alt="Geladeira Electrolux Frost Free 590L" class="mx-auto mb-6 w-32 h-32 object-cover rounded-3xl shadow-sm">
-                    <h3 class="font-serif text-2xl text-navy">Geladeira Electrolux Frost Free 590L</h3>
-                    <p class="text-mint font-bold text-xl">Efficient 3 Portas Cor Inox Look</p>
-                    <button class="mt-6 w-full py-2 border border-navy text-navy text-xs uppercase font-bold tracking-widest group-hover:bg-navy group-hover:text-white transition">Presentear</button>
-                </div>
-                <div onclick="openModal('Adega Brastemp Dual Zone 33 Garrafas', 'Sob consulta')" class="bg-white p-8 border border-gray-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition duration-500 cursor-pointer group text-center rounded-sm">
-                    <img src="adega.png" alt="Adega Brastemp Dual Zone 33 Garrafas" class="mx-auto mb-6 w-32 h-32 object-cover rounded-3xl shadow-sm">
-                    <h3 class="font-serif text-2xl text-navy">Adega Brastemp Dual Zone</h3>
-                    <p class="text-mint font-bold text-xl">33 Garrafas</p>
-                    <button class="mt-6 w-full py-2 border border-navy text-navy text-xs uppercase font-bold tracking-widest group-hover:bg-navy group-hover:text-white transition">Presentear</button>
-                </div>
-                <div onclick="openModal('Smart TV Samsung 65 polegadas Vision AI OLED 4K', 'Sob consulta')" class="bg-white p-8 border border-gray-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition duration-500 cursor-pointer group text-center rounded-sm">
-                    <img src="televisão.png" alt="Smart TV Samsung 65 polegadas Vision AI OLED 4K" class="mx-auto mb-6 w-32 h-32 object-cover rounded-3xl shadow-sm">
-                    <h3 class="font-serif text-2xl text-navy">Smart TV Samsung 65 polegadas Vision AI</h3>
-                    <p class="text-mint font-bold text-xl">OLED 4K</p>
-                    <button class="mt-6 w-full py-2 border border-navy text-navy text-xs uppercase font-bold tracking-widest group-hover:bg-navy group-hover:text-white transition">Presentear</button>
-                </div>
-            </div>
+            <div id="gifts-grid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 max-w-6xl mx-auto"></div>
         </section>
-
     </main>
 
     <footer class="bg-navy text-white py-12 text-center relative z-10">
         <p class="font-serif text-2xl mb-2">Raquel & Claudio</p>
-        <p class="text-white/40 text-xs tracking-widest uppercase">Campo Mourão, 2026</p>
+        <p class="text-white/40 text-xs tracking-widest uppercase">Campo Mour&atilde;o, 2026</p>
     </footer>
 
     <a href="https://open.spotify.com/playlist/SEU_LINK_AQUI" target="_blank" class="fixed bottom-6 left-6 z-40 bg-white/90 backdrop-blur-md text-navy px-4 py-3 rounded-full shadow-lg flex items-center gap-3 hover:bg-navy hover:text-white transition duration-300 border border-gray-200 group">
@@ -281,9 +232,9 @@
         <span class="text-[10px] font-bold uppercase tracking-widest">Playlist</span>
     </a>
 
-    <a href="https://wa.me/5511999999999?text=Olá!%20Gostaria%20de%20confirmar%20minha%20presença." target="_blank" class="fixed bottom-6 right-6 z-40 group flex items-center gap-4">
+    <a href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Gostaria%20de%20confirmar%20minha%20presen%C3%A7a." target="_blank" class="fixed bottom-6 right-6 z-40 group flex items-center gap-4">
         <span class="bg-white text-navy px-4 py-2 rounded-sm shadow-md text-xs font-bold uppercase tracking-widest hidden md:block">
-            Confirmar Presença
+            Confirmar Presen&ccedil;a
         </span>
         <div class="bg-mint text-navy p-4 rounded-full shadow-2xl pulse-green hover:bg-navy hover:text-white transition duration-300">
             <i data-lucide="message-circle-heart" class="w-6 h-6"></i>
@@ -294,58 +245,133 @@
         <div class="bg-white w-full max-w-sm p-0 rounded-sm overflow-hidden shadow-2xl relative">
             <div class="bg-navy p-6 text-center text-white relative">
                 <button onclick="closeModal()" class="absolute top-4 right-4 text-white/60 hover:text-white"><i data-lucide="x"></i></button>
-                <p class="text-xs uppercase tracking-widest text-mint mb-1">Você escolheu</p>
+                <p class="text-xs uppercase tracking-widest text-mint mb-1">Voc&ecirc; escolheu</p>
                 <h3 id="modal-title" class="font-serif text-2xl">Presente</h3>
             </div>
             <div class="p-8 text-center">
+                <img id="modal-image" src="" alt="Presente selecionado" class="w-40 h-40 mx-auto object-contain rounded-2xl shadow-sm mb-6 bg-cream p-2">
                 <p id="modal-price" class="text-3xl text-navy font-serif font-bold mb-6">R$ 0,00</p>
-                <div class="bg-white border-2 border-dashed border-gray-300 p-2 inline-block rounded-lg mb-6 relative group">
-                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=PixExemplo" alt="QR Code Pix" class="w-40 h-40 opacity-90">
-                    <p class="absolute -bottom-6 left-0 right-0 text-[10px] text-gray-400">Escaneie com o App</p>
-                </div>
-                <button onclick="alert('Chave PIX copiada!')" class="w-full bg-mint/20 text-navy hover:bg-mint hover:text-white py-3 uppercase text-xs font-bold tracking-widest transition rounded-sm flex items-center justify-center gap-2"><i data-lucide="copy" class="w-4 h-4"></i> Copiar Chave Pix</button>
-                
-                <p class="text-navy text-xs font-bold uppercase tracking-widest mt-8 mb-3">Ou Pague Por Link</p>
+                <p class="text-navy text-xs font-bold uppercase tracking-widest mb-3">Link de Pagamento</p>
                 <div>
-                    <a id="payment-link-anchor" href="https://mpago.li/2TYEn4g" target="_blank" rel="noopener noreferrer" class="text-navy font-bold text-base md:text-lg underline decoration-navy decoration-2 hover:text-mint transition">
-                        https://mpago.li/2TYEn4g
-                    </a>
+                    <a id="payment-link-anchor" href="#" target="_blank" rel="noopener noreferrer" class="text-navy font-bold text-base md:text-lg underline decoration-navy decoration-2 hover:text-mint transition break-all"></a>
                 </div>
+                <button onclick="copyPaymentLink()" class="w-full mt-6 bg-mint/20 text-navy hover:bg-mint hover:text-white py-3 uppercase text-xs font-bold tracking-widest transition rounded-sm flex items-center justify-center gap-2">
+                    <i data-lucide="copy" class="w-4 h-4"></i> Copiar Link
+                </button>
             </div>
         </div>
     </div>
 
     <script>
+        const gifts = [
+            { title: 'Batedeira Planetária Electrolux 750W Preta Experience com Tigela 5L', price: '439,90', image: 'https://electrolux.vtexassets.com/arquivos/ids/220023-500-500?v=638815556746330000&width=500&height=500&aspect=true&format=auto', paymentLink: 'https://mpago.la/1qnefJX' },
+            { title: 'Aparelho de Jantar Tramontina Azzura 20 Peças', price: '499,99', image: 'https://www.havan.com.br/media/catalog/product/j/o/jogo-de-jantar-tramontina-azzura-20pecas_1079850.jpg', paymentLink: 'https://mpago.la/1guogY8' },
+            { title: 'Vaporizador Passadeira de Roupas Portátil Electrolux', price: '185,21', image: 'https://electrolux.vtexassets.com/arquivos/ids/223835-500-500?v=638874885791070000&width=500&height=500&aspect=true&format=auto', paymentLink: 'https://mpago.la/1vesiMb' },
+            { title: 'Sanduicheira e Grill Britânia', price: '100,00', image: 'https://www.havan.com.br/media/catalog/product/s/a/sanduicheira-e-grill-britania-2-em-1-750w-bgr25b_1127715_2.jpg', paymentLink: 'https://mpago.la/2VjhZ2L' },
+            { title: 'Pipoqueira Elétrica Britânia', price: '150,00', image: 'https://a-static.mlcdn.com.br/%7Bw%7Dx%7Bh%7D/pipoqueira-eletrica-britania-pop-time-1-200-watts-220v-50-60hz-branca/grupoduascabecasmetavel/3976735/d61f3d6f0637b073300bca1043022ced.jpeg', paymentLink: 'https://mpago.la/2sGgxZd' },
+            { title: 'Panela Elétrica para Fondue Oster', price: '230,00', image: 'https://m.media-amazon.com/images/I/51FMJp5eYOL._AC_UF894,1000_QL80_.jpg', paymentLink: 'https://mpago.la/1EX5AfV' },
+            { title: 'Panela Elétrica Electrolux por Rita Lobo 1,8L Preta Experience Digital (ECC20)', price: '379,90', image: 'https://electrolux.vtexassets.com/arquivos/ids/285523-500-500?v=638977978724700000&width=500&height=500&aspect=true&format=auto', paymentLink: 'https://mpago.la/1oMzEFs' },
+            { title: 'Micro-ondas de Embutir Fischer Fit Line 25 litros', price: '1398,99', image: 'https://www.fischer.com.br/media/catalog/product/m/i/micro_fit_25_inox_11.png', paymentLink: 'https://mpago.la/25ZrqjT' },
+            { title: 'Liquidificador Philips Walita Série 5000 (RI2244)', price: '329,90', image: 'https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSXQwiwqDl3j2PMdFuFWrZgGLZugCEVnsN1J0eXtccFSJ9-wR7j72_-tTFjTY-fXKk13TBbykJ5glo7rQ3AR1j_8ZxCgjJC43x5kOM3WBecqVmYx5IuJV49LOoYTfQeynhwkyLzJr_p&usqp=CAc', paymentLink: 'https://mpago.la/2HAsbXc' },
+            { title: 'Faqueiro Maresias Aço Inox com Estojo de Madeira, 76 Peças, Tramontina', price: '840,00', image: 'https://m.media-amazon.com/images/I/91IJmyNPebL.jpg', paymentLink: 'https://mpago.la/2TzQgfW' },
+            { title: 'Fritadeira Elétrica Wap Air Fryer Oven Digital Black', price: '499,00', image: 'https://lojawap.vtexassets.com/arquivos/ids/175742/airfry-oven-black_01.jpg.jpg?v=639040110691600000', paymentLink: 'https://mpago.la/2efy5Y8' },
+            { title: 'Forno Elétrico de Embutir Fischer Infinity 78 litros', price: '1999,00', image: 'https://www.fischer.com.br/media/catalog/product/f/o/forno_78L_INOX_90.png', paymentLink: 'https://mpago.la/14WD8HR' },
+            { title: 'Cooktop de Indução Fischer 4 Bocas Vitrocerâmica', price: '1799,99', image: 'https://www.fischer.com.br/media/catalog/product/cache/1a57bae80e9fc366f375d1c874ef620b/c/o/cooktop_inducao_4b_11.png', paymentLink: 'https://mpago.la/2CXfr21' },
+            { title: 'Aquecedor Britânia 2 em 1', price: '149,90', image: 'https://www.havan.com.br/media/catalog/product/cache/820af7facfa7aca6eb3c138e3457dc8d/a/q/aquecedor-britania-2-em-1-ab1100n_215893_5.jpg', paymentLink: 'https://mpago.la/32LFPQk' },
+            { title: 'Adega Brastemp Dual Zone 33 Garrafas', price: '2669,90', image: 'https://brastemp.vtexassets.com/arquivos/ids/271989-800-800?v=639007937491530000&width=800&height=800&aspect=true', paymentLink: 'https://mpago.la/1ve168h' },
+            { title: 'Smart TV Samsung 65&quot; Vision AI TV OLED 4K', price: '7170,00', image: 'https://images.samsung.com/is/image/samsung/p6pim/br/qn65s85fagxzd/gallery/br-oled-tv-qn65s85fagxzd-front-graphite-548309472?$Q90_1248_936_F_PNG$', paymentLink: 'https://mpago.la/2kDAeeq' },
+            { title: 'Kit para Churrasco Inox 15 peças Tramontina', price: '190,00', image: 'https://m.media-amazon.com/images/I/81ZEOitTchL._AC_UF894,1000_QL80_.jpg', paymentLink: 'https://mpago.la/1RBL1ro' },
+            { title: 'Mixer 3 em 1 Electrolux Preto 400W com Tecnologia TruFlow (EIB10) - 127V', price: '249,90', image: 'https://electrolux.vtexassets.com/arquivos/ids/210171-500-500?v=638815549423900000&width=500&height=500&aspect=true&format=auto', paymentLink: 'https://mpago.la/1w7yKrL' },
+            { title: 'Cafeteira Elétrica Electrolux Digital 38 Xícaras Experience Programável com Timer Cor Inox (ECM30) - 127V', price: '329,90', image: 'https://electrolux.vtexassets.com/arquivos/ids/214556-500-500?v=638848332276830000&width=500&height=500&aspect=true&format=auto', paymentLink: 'https://mpago.la/1KMfrWU' },
+            { title: 'Churrasqueira Elétrica Portátil Fischer Ranch Grill', price: '259,90', image: 'https://www.fischer.com.br/media/catalog/product/cache/1a57bae80e9fc366f375d1c874ef620b/G/r/Grill_111.png', paymentLink: 'https://mpago.la/1oLqpKC' },
+            { title: 'Chaleira Elétrica Electrolux 1,7L Experience com Desligamento Automático (EEK25) - 127V', price: '229,90', image: 'https://electrolux.vtexassets.com/arquivos/ids/212187-500-500?v=638851546756670000&width=500&height=500&aspect=true&format=auto', paymentLink: 'https://mpago.la/1LNsKkK' },
+            { title: 'Geladeira Electrolux Frost Free Inverter 480L Efficient AutoSense 3 Portas Inox Look (IM7S) - 127V', price: '5699,00', image: 'https://electrolux.vtexassets.com/arquivos/ids/288686-500-500?v=639046868002630000&width=500&height=500&aspect=true&format=auto', paymentLink: 'https://mpago.la/2CdyLG4' },
+            { title: 'Ar Condicionado Split Hi Wall Inverter Elgin Eco 9000 BTU/h Frio 45HJFE09C2CC 220V', price: '1800,00', image: 'https://m.media-amazon.com/images/I/31s0ITDBVGL._AC_SX425_.jpg', paymentLink: 'https://mpago.la/2oBmhqo' },
+            { title: 'Purificador de Água Gelada, Fria e Natural Elétrico Luz UV Prata (PA31G)', price: '1159,90', image: 'https://m.media-amazon.com/images/I/51kIgrYn55L._AC_SX425_.jpg', paymentLink: 'https://mpago.la/1pXkenq' },
+            { title: 'Jogo de Panelas Tramontina Solar em Aço Inox com Fundo Triplo e Tampas de Inox 6 Peças', price: '749,90', image: 'Captura de tela 2026-04-20 142353.png', paymentLink: 'https://mpago.la/24DydF8' },
+            { title: 'Panela de Pressão 4.5L Inox Fundo Triplo Brava Tramontina', price: '434,00', image: 'https://http2.mlstatic.com/D_NQ_NP_2X_653395-MLA99553154894_122025-F.webp', paymentLink: 'https://mpago.la/1VtHFWo' },
+            { title: 'Purificador Electrolux Eletrônico com Painel Digital e Filtro Luz UV Bivolt Cinza (PA31G)', price: '1239,00', image: 'https://electrolux.vtexassets.com/arquivos/ids/213764-500-500?v=637716815590830000&width=500&height=500&aspect=true&format=auto', paymentLink: 'https://mpago.la/2JrUiwx' },
+            { title: 'Jogo de 30 Taças e Copos Bohemia Titânio Resistente 5x6', price: '600,00', image: 'https://http2.mlstatic.com/D_NQ_NP_2X_990751-MLB52356761661_112022-F.webp', paymentLink: 'https://mpago.la/2MeMzzX' },
+            { title: 'Galheteiro Tramontina com Suporte 4 Peças Realce', price: '190,00', image: 'https://m.magazineluiza.com.br/a-static/420x420/galheteiro-tramontina-com-suporte-4-pecas-realce/magazineluiza/238301200/8f0eae3cfe6febefcedca82572b57840.jpg', paymentLink: 'https://mpago.la/2S3mksn' }
+        ];
+
         lucide.createIcons();
 
-        // LOGICA DE PRELOADER E NAVEGAÇÃO
         window.addEventListener('load', () => {
             setTimeout(() => {
                 const loader = document.getElementById('preloader');
-                loader.classList.add('fade-out-loader'); 
+                loader.classList.add('fade-out-loader');
                 document.body.classList.remove('loading');
                 setTimeout(() => {
                     loader.style.display = 'none';
                 }, 1000);
-            }, 2000); // 2 segundos de preloader
+            }, 2000);
         });
 
         function toggleMobileMenu() {
             document.getElementById('mobile-menu').classList.toggle('hidden');
         }
 
-        const modal = document.getElementById('modal');
-        function openModal(title, price) {
-            document.getElementById('modal-title').innerText = title;
-            document.getElementById('modal-price').innerText = "R$ " + price;
-            modal.classList.remove('hidden');
+        function escapeHtml(text) {
+            return text
+                .replaceAll('&', '&amp;')
+                .replaceAll('<', '&lt;')
+                .replaceAll('>', '&gt;')
+                .replaceAll('"', '&quot;')
+                .replaceAll("'", '&#39;');
         }
+
+        function renderGiftCards() {
+            const giftsGrid = document.getElementById('gifts-grid');
+
+            giftsGrid.innerHTML = gifts.map((gift, index) => `
+                <article class="bg-white p-8 border border-gray-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition duration-500 group text-center rounded-sm flex flex-col">
+                    <img src="${gift.image}" alt="${escapeHtml(gift.title)}" class="mx-auto mb-6 w-40 h-40 object-contain rounded-3xl shadow-sm bg-cream p-3">
+                    <h3 class="font-serif text-2xl text-navy">${gift.title}</h3>
+                    <p class="text-mint font-bold text-2xl mt-4">R$ ${gift.price}</p>
+                    <button type="button" onclick="openModalByIndex(${index})" class="mt-6 w-full py-2 border border-navy text-navy text-xs uppercase font-bold tracking-widest group-hover:bg-navy group-hover:text-white transition">Presentear</button>
+                </article>
+            `).join('');
+        }
+
+        const modal = document.getElementById('modal');
+        const modalTitle = document.getElementById('modal-title');
+        const modalPrice = document.getElementById('modal-price');
+        const modalImage = document.getElementById('modal-image');
+        const paymentLinkAnchor = document.getElementById('payment-link-anchor');
+
+        function openModalByIndex(index) {
+            const gift = gifts[index];
+            if (!gift) return;
+
+            modalTitle.innerText = gift.title.replaceAll('&quot;', '"');
+            modalPrice.innerText = `R$ ${gift.price}`;
+            modalImage.src = gift.image;
+            modalImage.alt = gift.title.replaceAll('&quot;', '"');
+            paymentLinkAnchor.href = gift.paymentLink;
+            paymentLinkAnchor.innerText = gift.paymentLink;
+            modal.classList.remove('hidden');
+            lucide.createIcons();
+        }
+
+        async function copyPaymentLink() {
+            try {
+                await navigator.clipboard.writeText(paymentLinkAnchor.href);
+                alert('Link de pagamento copiado!');
+            } catch (error) {
+                alert('Não foi possível copiar o link automaticamente.');
+            }
+        }
+
         function closeModal() {
             modal.classList.add('hidden');
         }
+
         modal.addEventListener('click', (e) => {
             if (e.target === modal) closeModal();
         });
+
+        renderGiftCards();
     </script>
 </body>
 </html>
