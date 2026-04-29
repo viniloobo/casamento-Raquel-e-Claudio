@@ -8,7 +8,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
 
-    <link href="https://fonts.googleapis.com/css2?family=Catharsis:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Catharsis:wght@400;700&family=Cormorant+Garamond:ital,wght@1,500&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 
     <script>
         tailwind.config = {
@@ -22,6 +22,7 @@
                     },
                     fontFamily: {
                         serif: ['"Playfair Display"', 'serif'],
+                        elegant: ['"Cormorant Garamond"', 'serif'],
                         body: ['"Catharsis"', 'serif'],
                     }
                 }
@@ -47,9 +48,7 @@
             100% { transform: scale(1); opacity: 0.8; }
         }
 
-        .heart-beat-anim {
-            animation: heartbeat 1.5s infinite ease-in-out;
-        }
+        .heart-beat-anim { animation: heartbeat 1.5s infinite ease-in-out; }
 
         .fade-out-loader {
             opacity: 0;
@@ -80,6 +79,56 @@
 
         .hidden-section { display: none; }
         body.loading { overflow: hidden; }
+
+        /* ===================== TIMELINE ZIG-ZAG ===================== */
+        .timeline-line-v2 {
+            transform-origin: top;
+            transform: scaleY(0);
+            transition: transform 2.5s cubic-bezier(0.65, 0, 0.35, 1);
+        }
+        .timeline-container-v2.is-visible .timeline-line-v2 {
+            transform: scaleY(1);
+        }
+
+        /* Milestones: opacity + side-slide */
+        .milestone-v2 {
+            opacity: 0;
+            transition: opacity 1s ease-out, transform 1s ease-out;
+            transform: translateY(30px);
+        }
+        @media (min-width: 768px) {
+            .milestone-v2.from-left  { transform: translateX(-50px); }
+            .milestone-v2.from-right { transform: translateX(50px); }
+        }
+        .milestone-v2.is-visible {
+            opacity: 1;
+            transform: translateY(0) translateX(0);
+        }
+
+        /* Dot pop-in with bouncy easing */
+        .dot-pop {
+            transform: scale(0);
+            transition: transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.4s;
+        }
+        .milestone-v2.is-visible .dot-pop {
+            transform: scale(1);
+        }
+
+        /* Year fade with slight delay */
+        .milestone-year {
+            opacity: 0;
+            transition: opacity 1.4s ease-out 0.2s;
+        }
+        .milestone-v2.is-visible .milestone-year {
+            opacity: 1;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .timeline-line-v2 { transform: scaleY(1); }
+            .milestone-v2 { opacity: 1; transform: none; transition: none; }
+            .dot-pop { transform: scale(1); }
+            .milestone-year { opacity: 1; }
+        }
     </style>
 </head>
 <body class="bg-cream text-navy font-body antialiased pb-24 md:pb-0 loading">
@@ -146,50 +195,189 @@
                     <div class="fade-in delay-200 border-t md:border-t-0 md:border-l border-gray-100 pt-8 md:pt-0 md:pl-8">
                         <div class="w-12 h-12 bg-cream rounded-full flex items-center justify-center mx-auto mb-4 text-navy"><i data-lucide="map-pin" class="w-5 h-5"></i></div>
                         <h3 class="font-serif text-xl text-navy mb-2">Recanto do Criador</h3>
-                        <p class="text-gray-500 font-light">BR-158 Km 3,5 - Jardim Silvana, Campo Mourão - PR</p>
+                        <p class="text-gray-500 font-light">BR-158 Km 3,5 - Jardim Silvana, Campo Mour&atilde;o - PR</p>
                     </div>
                 </div>
             </div>
 
-            <div class="text-center py-20 px-6 max-w-2xl mx-auto">
-                <i data-lucide="quote" class="w-8 h-8 text-mint/50 mx-auto mb-4"></i>
-                <p class="font-serif text-3xl text-navy italic leading-relaxed">"O amor n&atilde;o consiste em olhar um para o outro, mas sim em olhar juntos para a mesma dire&ccedil;&atilde;o."</p>
-                <p class="text-gray-400 mt-6 text-xs tracking-widest uppercase">Antoine de Saint-Exup&eacute;ry</p>
-            </div>
         </section>
 
-        <section id="story" class="page-section container mx-auto px-6 py-16 max-w-4xl fade-in">
-            <div class="text-center mb-16">
-                <span class="text-mint text-xs font-bold tracking-[0.2em] uppercase">Timeline</span>
-                <h2 class="text-4xl md:text-5xl font-serif text-navy mt-3">Nossa Hist&oacute;ria</h2>
+        <!-- ============================================================
+             NOSSA HISTÓRIA — TIMELINE ZIG-ZAG
+             ============================================================ -->
+        <section id="story" class="page-section py-20 md:py-28 px-6 fade-in">
+
+            <!-- Cabeçalho -->
+            <div class="text-center max-w-4xl mx-auto mb-20 md:mb-28">
+                <span class="text-mint text-xs font-bold tracking-[0.3em] uppercase">Timeline</span>
+                <h2 class="text-5xl md:text-6xl lg:text-7xl font-serif text-navy mt-4">Nossa Hist&oacute;ria</h2>
+
+                <div class="flex items-center justify-center gap-4 mt-10">
+                    <span class="h-px w-16 md:w-24 bg-gold/60"></span>
+                    <i data-lucide="heart" class="w-4 h-4 text-mint fill-mint"></i>
+                    <span class="h-px w-16 md:w-24 bg-gold/60"></span>
+                </div>
+
+                <p class="font-serif text-xl md:text-2xl italic text-gray-500 max-w-2xl mx-auto leading-relaxed mt-10">
+                    Nossa hist&oacute;ria come&ccedil;ou de uma forma que s&oacute; pode ser explicada pelos planos de Deus.
+                </p>
             </div>
-            <div class="space-y-12 relative border-l border-navy/10 ml-6 md:ml-1/2">
-                <div class="relative pl-12 md:pl-0 fade-in delay-100">
-                    <div class="md:flex items-center justify-between group">
-                        <div class="absolute -left-[5px] md:left-1/2 md:-ml-[5px] top-2 w-2.5 h-2.5 bg-navy rounded-full group-hover:bg-mint transition duration-500"></div>
-                        <div class="md:w-[45%] md:text-right pr-8">
-                            <span class="text-4xl font-serif text-navy/20 block mb-2">2018</span>
-                            <h3 class="text-2xl font-serif text-navy">O Primeiro Olhar</h3>
+
+            <!-- Timeline -->
+            <div class="relative max-w-5xl mx-auto timeline-container-v2" data-reveal>
+
+                <!-- Linha vertical (centralizada no desktop, esquerda no mobile) -->
+                <div class="absolute top-0 bottom-0 w-px bg-navy/15 timeline-line-v2 left-4 md:left-1/2 md:-translate-x-1/2"></div>
+
+                <div class="space-y-20 md:space-y-28">
+
+                    <!-- ============ MARCO 1 — O PRIMEIRO OLHAR (esquerda) ============ -->
+                    <div class="relative md:grid md:grid-cols-2 md:gap-12 lg:gap-20 milestone-v2 from-left" data-reveal>
+                        <div class="absolute left-4 md:left-1/2 -translate-x-1/2 top-3 md:top-8 z-10">
+                            <div class="w-4 h-4 rounded-full bg-navy border-4 border-cream dot-pop"></div>
                         </div>
-                        <div class="md:w-[45%] md:pl-8 mt-2 md:mt-0">
-                            <p class="text-lg text-gray-600 leading-relaxed">Em uma festa de amigos em comum, nossos destinos se cruzaram. N&atilde;o sab&iacute;amos, mas ali come&ccedil;ava nossa eternidade.</p>
+                        <div class="md:text-right md:pr-14 pl-14 md:pl-0">
+                            <p class="font-serif text-6xl md:text-7xl lg:text-8xl text-gray-300 leading-none milestone-year">2022</p>
+                            <h3 class="font-serif text-2xl md:text-3xl text-navy mt-3 leading-tight">O Primeiro Olhar</h3>
+                            <p class="text-mint text-[11px] font-bold tracking-[0.25em] uppercase mt-3">Setembro &middot; Campo Mour&atilde;o</p>
+                        </div>
+                        <div class="pl-14 md:pl-14 mt-5 md:mt-16">
+                            <p class="text-gray-600 leading-relaxed text-base md:text-lg">
+                                Tínhamos um ponto em comum: Campo Mourão, a cidade onde Cláudio estudava e também a cidade natal de Raquel. Vivíamos em cidades diferentes, mas tudo começou com uma simples troca de mensagens pelo Instagram, que aos poucos se tornou mais frequente e especial. Em um fim de semana, sem que nada tivesse sido combinado, estivemos no mesmo lugar, um supermercado em Campo Mourão. Foi ali que Cláudio avistou Raquel e ficou na dúvida, até que, ao ouvir a mãe dela chamando, veio a confirmação. Não houve abordagem naquele momento, mas os nossos caminhos já haviam se cruzado.
+                            </p>
                         </div>
                     </div>
-                </div>
-                <div class="relative pl-12 md:pl-0 fade-in delay-200">
-                    <div class="md:flex items-center justify-between group">
-                        <div class="absolute -left-[5px] md:left-1/2 md:-ml-[5px] top-2 w-2.5 h-2.5 bg-mint rounded-full"></div>
-                        <div class="md:w-[45%] text-left pr-8 md:order-2 md:pl-8 md:pr-0">
-                            <span class="text-4xl font-serif text-navy/20 block mb-2">2020</span>
-                            <h3 class="text-2xl font-serif text-navy">O Namoro</h3>
+
+                    <!-- ============ MARCO 2 — O PRIMEIRO ALMOÇO (direita) ============ -->
+                    <div class="relative md:grid md:grid-cols-2 md:gap-12 lg:gap-20 milestone-v2 from-right" data-reveal>
+                        <div class="absolute left-4 md:left-1/2 -translate-x-1/2 top-3 md:top-8 z-10">
+                            <div class="w-4 h-4 rounded-full bg-mint border-4 border-cream dot-pop"></div>
                         </div>
-                        <div class="md:w-[45%] md:pl-8 mt-2 md:mt-0 md:order-1 md:text-left md:pl-0 md:pr-8">
-                            <p class="text-lg text-gray-600 leading-relaxed">O pedido aconteceu na praia, sob a luz do luar, selando nosso compromisso de caminhar juntos.</p>
+                        <div class="md:order-2 pl-14 md:pl-14">
+                            <p class="font-serif text-6xl md:text-7xl lg:text-8xl text-gray-300 leading-none milestone-year">2022</p>
+                            <h3 class="font-serif text-2xl md:text-3xl text-navy mt-3 leading-tight">O Primeiro Almo&ccedil;o</h3>
+                            <p class="text-mint text-[11px] font-bold tracking-[0.25em] uppercase mt-3">12 de Setembro &middot; Maring&aacute;</p>
+                        </div>
+                        <div class="md:order-1 md:text-right md:pr-14 pl-14 md:pl-0 mt-5 md:mt-16">
+                            <p class="text-gray-600 leading-relaxed text-base md:text-lg">
+                                As conversas continuaram e se intensificaram, at&eacute; decidirmos nos encontrar pessoalmente. No dia 12 de setembro, em Maring&aacute;, tivemos nosso primeiro almo&ccedil;o. <em class="font-serif text-navy">O que parecia um encontro simples se tornou o in&iacute;cio de algo muito maior.</em> Sa&iacute;mos dali com o cora&ccedil;&atilde;o diferente, com a certeza de que algo especial havia come&ccedil;ado.
+                            </p>
                         </div>
                     </div>
+
+                    <!-- ============ MARCO 3 — O INÍCIO DO NAMORO (esquerda) ============ -->
+                    <div class="relative md:grid md:grid-cols-2 md:gap-12 lg:gap-20 milestone-v2 from-left" data-reveal>
+                        <div class="absolute left-4 md:left-1/2 -translate-x-1/2 top-3 md:top-8 z-10">
+                            <div class="w-4 h-4 rounded-full bg-navy border-4 border-cream dot-pop"></div>
+                        </div>
+                        <div class="md:text-right md:pr-14 pl-14 md:pl-0">
+                            <p class="font-serif text-6xl md:text-7xl lg:text-8xl text-gray-300 leading-none milestone-year">2022</p>
+                            <h3 class="font-serif text-2xl md:text-3xl text-navy mt-3 leading-tight">O In&iacute;cio do Namoro</h3>
+                            <p class="text-mint text-[11px] font-bold tracking-[0.25em] uppercase mt-3">17 de Setembro</p>
+                        </div>
+                        <div class="pl-14 md:pl-14 mt-5 md:mt-16">
+                            <p class="text-gray-600 leading-relaxed text-base md:text-lg">
+                                E ent&atilde;o tudo aconteceu de forma intensa e natural. Na mesma semana, conhecemos a fam&iacute;lia, sa&iacute;mos para jantar e nos aproximamos ainda mais. No dia 17 de setembro, demos um passo importante e come&ccedil;amos nosso namoro, apenas cinco dias depois daquele primeiro almo&ccedil;o.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- ============ MARCO 4 — A MESMA CIDADE (direita) ============ -->
+                    <div class="relative md:grid md:grid-cols-2 md:gap-12 lg:gap-20 milestone-v2 from-right" data-reveal>
+                        <div class="absolute left-4 md:left-1/2 -translate-x-1/2 top-3 md:top-8 z-10">
+                            <div class="w-4 h-4 rounded-full bg-mint border-4 border-cream dot-pop"></div>
+                        </div>
+                        <div class="md:order-2 pl-14 md:pl-14">
+                            <p class="font-serif text-6xl md:text-7xl lg:text-8xl text-gray-300 leading-none milestone-year">2023</p>
+                            <h3 class="font-serif text-2xl md:text-3xl text-navy mt-3 leading-tight">A Mesma Cidade</h3>
+                            <p class="text-mint text-[11px] font-bold tracking-[0.25em] uppercase mt-3">Janeiro</p>
+                        </div>
+                        <div class="md:order-1 md:text-right md:pr-14 pl-14 md:pl-0 mt-5 md:mt-16">
+                            <p class="text-gray-600 leading-relaxed text-base md:text-lg">
+                                Em janeiro de 2023, ficamos ainda mais pr&oacute;ximos quando passamos a viver na mesma cidade. Foi nesse tempo que descobrimos que <em class="font-serif text-navy">o amor verdadeiro &eacute; constru&iacute;do todos os dias</em>, e que a base da nossa rela&ccedil;&atilde;o est&aacute; nos princ&iacute;pios que compartilhamos: f&eacute;, respeito, cuidado e a certeza de que Deus est&aacute; no centro de tudo.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- ============ MARCO 5 — À DISTÂNCIA (esquerda) ============ -->
+                    <div class="relative md:grid md:grid-cols-2 md:gap-12 lg:gap-20 milestone-v2 from-left" data-reveal>
+                        <div class="absolute left-4 md:left-1/2 -translate-x-1/2 top-3 md:top-8 z-10">
+                            <div class="w-4 h-4 rounded-full bg-navy border-4 border-cream dot-pop"></div>
+                        </div>
+                        <div class="md:text-right md:pr-14 pl-14 md:pl-0">
+                            <p class="font-serif text-6xl md:text-7xl lg:text-8xl text-gray-300 leading-none milestone-year">2024</p>
+                            <h3 class="font-serif text-2xl md:text-3xl text-navy mt-3 leading-tight">&Agrave; Dist&acirc;ncia</h3>
+                            <p class="text-mint text-[11px] font-bold tracking-[0.25em] uppercase mt-3">Maio</p>
+                        </div>
+                        <div class="pl-14 md:pl-14 mt-5 md:mt-16">
+                            <p class="text-gray-600 leading-relaxed text-base md:text-lg">
+                                Em maio de 2024, enfrentamos um novo desafio: a dist&acirc;ncia. Tem sido um tempo de aprendizado, saudade e crescimento, que fortaleceu ainda mais aquilo que Deus j&aacute; havia firmado em nossos cora&ccedil;&otilde;es. Aprendemos que amar tamb&eacute;m &eacute; saber esperar, e que a saudade pode ser parte do que nos faz crescer juntos.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- ============ MARCO 6 — O PEDIDO (direita) ============ -->
+                    <div class="relative md:grid md:grid-cols-2 md:gap-12 lg:gap-20 milestone-v2 from-right" data-reveal>
+                        <div class="absolute left-4 md:left-1/2 -translate-x-1/2 top-3 md:top-8 z-10">
+                            <div class="w-4 h-4 rounded-full bg-mint border-4 border-cream dot-pop"></div>
+                        </div>
+                        <div class="md:order-2 pl-14 md:pl-14">
+                            <p class="font-serif text-6xl md:text-7xl lg:text-8xl text-gray-300 leading-none milestone-year">2025</p>
+                            <h3 class="font-serif text-2xl md:text-3xl text-navy mt-3 leading-tight">O Pedido</h3>
+                            <p class="text-mint text-[11px] font-bold tracking-[0.25em] uppercase mt-3">30 de Maio</p>
+                        </div>
+                        <div class="md:order-1 md:text-right md:pr-14 pl-14 md:pl-0 mt-5 md:mt-16">
+                            <p class="text-gray-600 leading-relaxed text-base md:text-lg">
+                                Com o passar do tempo, tivemos ainda mais certeza de que <em class="font-serif text-navy">nossos caminhos n&atilde;o se cruzaram por acaso</em>. No dia 30 de maio de 2025, demos mais um passo guiado por essa convic&ccedil;&atilde;o: o pedido de casamento. Foi a confirma&ccedil;&atilde;o, em palavras e em uma alian&ccedil;a, daquilo que j&aacute; vinha sendo escrito h&aacute; anos em nossos cora&ccedil;&otilde;es.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- ============ MARCO 7 — O SIM PARA SEMPRE (esquerda) — DESTAQUE ============ -->
+                    <div class="relative md:grid md:grid-cols-2 md:gap-12 lg:gap-20 milestone-v2 from-left" data-reveal>
+                        <!-- Dot final com pulsing ring -->
+                        <div class="absolute left-4 md:left-1/2 -translate-x-1/2 top-3 md:top-8 z-10">
+                            <span class="relative flex items-center justify-center dot-pop">
+                                <span class="absolute w-8 h-8 rounded-full border border-mint animate-ping opacity-50"></span>
+                                <span class="relative block w-5 h-5 rounded-full bg-mint border-4 border-cream"></span>
+                            </span>
+                        </div>
+                        <div class="md:text-right md:pr-14 pl-14 md:pl-0">
+                            <p class="font-serif text-6xl md:text-7xl lg:text-8xl text-mint/40 leading-none milestone-year">2026</p>
+                            <h3 class="font-serif text-3xl md:text-4xl text-navy mt-3 leading-tight">O Sim para Sempre</h3>
+                            <p class="text-mint text-[11px] font-bold tracking-[0.25em] uppercase mt-3">26 de Setembro</p>
+                        </div>
+                        <div class="pl-14 md:pl-14 mt-5 md:mt-16">
+                            <p class="text-gray-600 leading-relaxed text-base md:text-lg">
+                                Agora, nos aproximamos do dia 26 de setembro de 2026 com o cora&ccedil;&atilde;o cheio de gratid&atilde;o. Celebraremos nossa uni&atilde;o diante de Deus, da fam&iacute;lia e dos amigos, dando in&iacute;cio a um novo cap&iacute;tulo da nossa hist&oacute;ria. Um cap&iacute;tulo que come&ccedil;a com um sim e que ser&aacute; vivido para sempre.
+                            </p>
+                        </div>
+                    </div>
+
                 </div>
             </div>
+
+            <!-- Encerramento -->
+            <div class="text-center max-w-2xl mx-auto mt-24 md:mt-32 px-4" data-reveal>
+                <i data-lucide="sparkles" class="w-7 h-7 text-mint mx-auto mb-6"></i>
+                <p class="font-elegant italic text-3xl md:text-4xl text-navy leading-snug mb-10">
+                    Quando Deus est&aacute; no centro, cada detalhe tem prop&oacute;sito, cada desafio tem sentido e o amor se fortalece a cada dia.
+                </p>
+
+                <div class="flex items-center justify-center gap-4 my-8">
+                    <span class="h-px w-16 md:w-24 bg-gold/60"></span>
+                    <i data-lucide="heart" class="w-4 h-4 text-mint fill-mint"></i>
+                    <span class="h-px w-16 md:w-24 bg-gold/60"></span>
+                </div>
+
+                <p class="font-serif text-3xl md:text-4xl text-navy">Raquel <span class="text-mint">&amp;</span> Cl&aacute;udio</p>
+                <p class="text-mint text-xs font-bold tracking-[0.4em] uppercase mt-4">26 . 09 . 2026</p>
+            </div>
+
         </section>
+        <!-- ============================================================
+             FIM NOSSA HISTÓRIA
+             ============================================================ -->
 
         <section id="location" class="page-section fade-in">
             <div class="h-[40vh] bg-gray-200 w-full relative">
@@ -246,11 +434,11 @@
             <div class="bg-navy p-6 text-center text-white relative">
                 <button onclick="closeModal()" class="absolute top-4 right-4 text-white/60 hover:text-white"><i data-lucide="x"></i></button>
                 <p class="text-xs uppercase tracking-widest text-mint mb-1">Voc&ecirc; escolheu</p>
-                <h3 id="modal-title" class="font-serif text-2xl">Presente</h3>
+                <h3 id="modal-title" class="text-xl font-bold leading-snug">Presente</h3>
             </div>
             <div class="p-8 text-center">
-                <img id="modal-image" src="" alt="Presente selecionado" class="w-40 h-40 mx-auto object-contain rounded-2xl shadow-sm mb-6 bg-cream p-2">
-                <p id="modal-price" class="text-3xl text-navy font-serif font-bold mb-6">R$ 0,00</p>
+                <img id="modal-image" src="QrCode.jpeg" alt="QR Code de pagamento" class="w-44 h-44 mx-auto object-contain rounded-sm shadow-sm mb-6 bg-white p-2 border-4 border-mint/30">
+                <p id="modal-price" class="text-3xl text-navy font-bold mb-6 font-sans tracking-normal">R$ 0,00</p>
                 <p class="text-navy text-xs font-bold uppercase tracking-widest mb-3">Link de Pagamento</p>
                 <div>
                     <a id="payment-link-anchor" href="#" target="_blank" rel="noopener noreferrer" class="text-navy font-bold text-base md:text-lg underline decoration-navy decoration-2 hover:text-mint transition break-all"></a>
@@ -346,8 +534,8 @@
 
             modalTitle.innerText = gift.title.replaceAll('&quot;', '"');
             modalPrice.innerText = `R$ ${gift.price}`;
-            modalImage.src = gift.image;
-            modalImage.alt = gift.title.replaceAll('&quot;', '"');
+            modalImage.src = 'QrCode.jpeg';
+            modalImage.alt = 'QR Code de pagamento';
             paymentLinkAnchor.href = gift.paymentLink;
             paymentLinkAnchor.innerText = gift.paymentLink;
             modal.classList.remove('hidden');
@@ -372,6 +560,18 @@
         });
 
         renderGiftCards();
+
+        // ============ TIMELINE — scroll-triggered reveals ============
+        const storyObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    storyObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.2, rootMargin: '0px 0px -80px 0px' });
+
+        document.querySelectorAll('#story [data-reveal]').forEach(el => storyObserver.observe(el));
     </script>
 </body>
 </html>
