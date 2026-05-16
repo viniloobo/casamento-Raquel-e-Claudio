@@ -462,7 +462,18 @@
             { title: 'Panela de Pressão 4.5L Inox Fundo Triplo Brava Tramontina', price: '434,00', image: 'https://http2.mlstatic.com/D_NQ_NP_2X_653395-MLA99553154894_122025-F.webp', paymentLink: 'https://mpago.la/1VtHFWo' },
             { title: 'Purificador Electrolux Eletrônico com Painel Digital e Filtro Luz UV Bivolt Cinza (PA31G)', price: '1239,00', image: 'https://electrolux.vtexassets.com/arquivos/ids/213764-500-500?v=637716815590830000&width=500&height=500&aspect=true&format=auto', paymentLink: 'https://mpago.la/2JrUiwx' },
             { title: 'Jogo de 30 Taças e Copos Bohemia Titânio Resistente 5x6', price: '600,00', image: 'https://http2.mlstatic.com/D_NQ_NP_2X_990751-MLB52356761661_112022-F.webp', paymentLink: 'https://mpago.la/2MeMzzX' },
-            { title: 'Galheteiro Tramontina com Suporte 4 Peças Realce', price: '190,00', image: 'https://m.magazineluiza.com.br/a-static/420x420/galheteiro-tramontina-com-suporte-4-pecas-realce/magazineluiza/238301200/8f0eae3cfe6febefcedca82572b57840.jpg', paymentLink: 'https://mpago.la/2S3mksn' }
+            { title: 'Galheteiro Tramontina com Suporte 4 Peças Realce', price: '190,00', image: 'https://m.magazineluiza.com.br/a-static/420x420/galheteiro-tramontina-com-suporte-4-pecas-realce/magazineluiza/238301200/8f0eae3cfe6febefcedca82572b57840.jpg', paymentLink: 'https://mpago.la/2S3mksn' },
+            { title: 'Kit para Vinho Oster Inspire', price: '259,90', image: 'Kit para Vinho Oster Inspire.png', paymentLink: 'https://mpago.la/1hXa3Kp' },
+            { title: 'Lavadora alta pressão Wap', price: '798,00', image: 'Lavadora de Alta Pressão WAP Combate Turbo 2600 Motor de Indução.png', paymentLink: 'https://mpago.la/16XextM' },
+            { title: 'Aparelho de jantar Lidia branco com borda dourada 16 peças Hauskraft', price: '341,90', image: 'Hauskraft- Aparelho de jantar Lidia branco com borda dourada 16 peças.jpg', paymentLink: 'https://mpago.la/2KRrXuj' },
+            { title: 'Jogo de Jarra e 6 Taças Diamond Transparente com Borda Dourada - Gamma', price: '150,00', image: 'Jogo de Jarra e 6 Taças Diamond Transparente com Borda Dourada - Gamma.jpg', paymentLink: 'https://mpago.la/2sGgxZd' },
+            { title: 'WOLFF - Conjunto 6 Taças para Vinho Crex 480ml Cristal', price: '129,00', image: 'WOLFF - Conjunto 6 Taças para Vinho Crex 480ml Cristal.jpg', paymentLink: 'https://mpago.la/2ccDCw2' },
+            { title: 'WOLFF - Conjunto 6 Copos Altos Galway 350ml Vidro', price: '69,90', image: 'WOLFF - Conjunto 6 Copos Altos Galway 350ml Vidro.jpg', paymentLink: 'https://mpago.la/1qcChj3' },
+            { title: 'Jogo com 6 Copos de Vidro Slam 460ml', price: '72,90', image: 'ogo com 6 Copos de Vidro Slam 460ml – Copos Altos para Água, Suco, Drinks e Refrigerante – Vidro Grosso e Elegante.jpg', paymentLink: 'https://mpago.la/169TMtk' },
+            { title: 'Kit 3 Tábuas de Corte de Madeira de Acácia com Suporte – Ideal para Cozinha e Presentear | BIEROFARO', price: '189,00', image: 'Kit 3 Tábuas de Corte de Madeira de Acácia com Suporte – Ideal para Cozinha e Presentear.jpg', paymentLink: 'https://mpago.la/1XCdwt6' },
+            { title: 'Jogo de Assadeiras Tramontina Brasil Antiaderente Starflon Max Mocaccino 3 Peças', price: '154,00', image: 'Jogo de Assadeiras Tramontina Brasil Antiaderente Starflon Max Mocaccino 3 Peças.jpg', paymentLink: 'https://mpago.la/2RUWFMj' },
+            { title: 'Kit Jogo Americano Completo Ano Novo Réveillon com Guardanapos e Porta Guardanapos 6 Lugares (COLMEIA LUREX DOURADO)', price: '169,00', image: 'Kit Jogo Americano Completo Ano Novo Réveillon com Guardanapos e Porta Guardanapos 6 Lugares (COLMEIA LUREX DOURADO - GUARDANAPOS OFF WHITE - PORTA GUARDANAPO ARGOLA BRANCA E DOURADA).jpg', paymentLink: 'https://mpago.la/2aoW6rJ' },
+            { title: 'Jogo Americano Elipse Couro Dupla Face 8 Unidades', price: '200,00', image: 'Jogo Americano Elipse Couro Dupla Face 8 Unidades e Brinde.png', paymentLink: 'https://mpago.la/2jW2xcC' }
         ];
 
         lucide.createIcons();
@@ -518,8 +529,8 @@
             modalPrice.innerText = `R$ ${gift.price}`;
             modalImage.src = 'QrCode.jpeg';
             modalImage.alt = 'QR Code de pagamento';
-            paymentLinkAnchor.href = gift.paymentLink;
-            paymentLinkAnchor.innerText = gift.paymentLink;
+            paymentLinkAnchor.href = gift.paymentLink || '#';
+            paymentLinkAnchor.innerText = gift.paymentLink || 'Link não disponível';
             modal.classList.remove('hidden');
             lucide.createIcons();
         }
